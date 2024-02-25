@@ -82,6 +82,7 @@ public class LanguageModel {
             probs.get(i).p = probs.get(i).count / totalOccurrences;
             probs.get(i).cp = currentIterator + probs.get(i).p;
             currentIterator = probs.get(i).cp;
+        }
         
 	}
 
@@ -91,7 +92,7 @@ public class LanguageModel {
         double r = randomGenerator.nextDouble(); 
 
         for (int i = 0; i < probs.getSize(); i++){
-            if (probs.get(i).cp > r){
+            if (probs.get(i).cp >= r){
                 return probs.get(i).chr;
             }
         }
